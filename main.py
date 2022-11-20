@@ -7,14 +7,7 @@ import pandas as pd
 days_of_the_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 today_and_next_day = [20, 21, 22, 23, 24, 25, 19]
 cred = {
-    'apiKey': "AIzaSyCO6fGQosvak27-N1mKe9mJBEld8uMlU20",
-    'authDomain': "froggenics.firebaseapp.com",
-    'projectId': "froggenics",
-    'storageBucket': "froggenics.appspot.com",
-    'messagingSenderId': "571796120674",
-    'appId': "1:571796120674:web:4b6a4725097ab51ddddd3b",
-    'measurementId': "G-QLN38H2TS6",
-    'databaseURL': ""
+    'Removed for security reasons', 'Removed for security reasons',
 }
 firebase = pyrebase.initialize_app(cred)
 auth = firebase.auth()
