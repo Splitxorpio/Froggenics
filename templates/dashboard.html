@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="../static/style.css">
+        
+    </head>
+    <body>
+        <div class="row">
+            <div class="left-column">
+                <img style="width: 100px; height: 100px; border-radius: 100px; border: 2px solid #00b300; padding: 5px;"
+                    src="/static/dumbbell-frogo.png" alt="" />
+                <h2>Welcome {{email}}!</h2>
+                <a class="btn" href="{{url_for('logout')}}">Logout</a>
+            </div>
+            <div class="right-column">
+                <h1 style="font-size: 50px;">Your <span class="highlight">current</span> plans:</h1>
+                <hr style="width: 75%;">
+                <br>
+                {% block content %}
+                    {% if results |length == 0 %}
+                        <h2>Hmm... No plans yet</h2>
+                        <br>
+                        <form action="{{url_for('predict')}}" method="post" style="width: 75%;">
+                            <h2 style="font-size: 40px;">Input your information!</h2>
+                            <input type="number" name="age" id="age" placeholder="Age">
+                            <input type="number" name="weight" id="weight" placeholder="Weight">
+                            <input type="number" name="height" id="height" placeholder="Height">
+                            <input type="number" name="calories_want" id="calories_want" placeholder="Amount of calories you want to lose">
+                            <input class="form-button" type="submit" value="Submit">
+                        </form>
+                    {% else %}
+                        <h2>Here are your inputs:</h2>
+                        <p>Your age: {{results[0]}}</p>
+                        <p>Your weight: {{results[1]}}</p>
+                        <p>Your height: {{results[2]}}</p>
+                        <p>Your goal: {{results[3]}} calories burnt</p>
+                        <br>
+                        <!-- for loop -->
+                        <!-- remove first 4 elements from result -->
+                        <!-- <div class="column-row">
+                        {% for i in results[4:] %}
+                            <div class="column-card">
+                                <img src="https://i.pinimg.com/originals/3d/e1/6a/3de16a306dbefd4b321a55b90d3c87cc.jpg">
+                                <p>{{i}}</p>
+                                <p>Do about 1 hour of biking on <strong><span class="highlight">Monday</span></strong>, November 21!</p>
+                            </div>
+                        {% endfor %} -->
+                        <!-- Slideshow container -->
+                        <div class="slideshow-container">
+
+                            <!-- Full-width images with number and caption text -->
+                            {% for i in results[4:] %}
+                            <div class="mySlides fade">
+                                <h1 style="font-size: 45px;">{{i[2]}}, Nov {{i[3]}}</h1>
+                                <img style="border-radius: 5px; width:70%" src="https://picsum.photos/1000/400?random={{i[3]}}" >
+                                <br>
+                                <div style="margin-top: 15px;" class="highlight">{{i[0]}}</div>
+                                <p>{{i[1]}}</p>
+                                <p>For {{ range(1, 3) | random }} hour(s).</p>
+                                <a href="{{url_for('map')}}" class="highlight">Find nearest fitness facilities near you</a>
+                            </div>
+                            {% endfor %}
+                            <!-- Next and previous buttons -->
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        </div>
+                        <br>
+                        <!-- The dots/circles -->
+                        <div style="text-align:center">
+                            {% for i in range(6) %}
+                            <span class="dot" onclick="currentSlide({{i+1}})"></span>
+                            {% endfor %}
+                        </div>
+                        </div>
+                    {% endif %}
+                {% endblock content %}
+            </div>
+        </div>
+        <script>
+                let slideIndex = 1;
+                showSlides(slideIndex);
+
+                // Next/previous controls
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                // Thumbnail image controls
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides");
+                    let dots = document.getElementsByClassName("dot");
+                    if (n > slides.length) { slideIndex = 1 }
+                    if (n < 1) { slideIndex = slides.length }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                }
+        </script>
+    </body>
+</html>

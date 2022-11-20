@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Froggenics - Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1><span class="highlight">Fitness</span> areas near you!</h1>
+        <h2>These places provide the equipment needed for a great workout!</h2>
+        <br>
+        <div style="width: 600px; height: 500px; border-radius: 5px;" id="map-canvas"></div>
+        <br>
+        <p>Currently logged in as <span class="highlight"><a style="text-decoration: none; color: #00b300;" href="{{url_for('home')}}">{{email}}</a></span></p>
+        <a class="btn" href="{{url_for('logout')}}">Logout</a>
+    </div>
+    <script>
+        var map;
+        var infowindow;
+        const labels = "P";
+        let labelIndex = 0;
+
+        function initMap() {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+
+                var locationvar = new google.maps.LatLng(latitude, longitude);
+                map = new google.maps.Map(document.getElementById('map-canvas'), {
+                    center: locationvar,
+                    zoom: 12
+                });
+                var request = {
+                    location: locationvar,
+                    radius: 20000,
+                    types: ['gym']
+                };
+                infowindow = new google.maps.InfoWindow();
+                var service = new google.maps.places.PlacesService(map);
+                service.nearbySearch(request, callback);
+                var markerloc = new google.maps.Marker({
+                    map: map,
+                    position: locationvar,
+                    icon: 'https://i.stack.imgur.com/PtfzI.png',
+                });
+                google.maps.event.addListener(markerloc, 'click', function() {
+                    infowindow.setContent("Your Location");
+                    infowindow.open(map, this);
+                });
+            });
+
+
+        }
+
+        function callback(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
+        }
+        function createMarker(place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+                label: labels[labelIndex++ % labels.length],
+                map: map,
+                position: place.geometry.location,
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
+        setTimeout(() => {
+            google.maps.event.addDomListener(window, 'load', initMap);
+        }, 0);
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvd1Rqz8p6MOPNjmxawcDbmhZAp1GpH4o&callback=initMap&libraries=places"></script>
+</body>
+
+</html>

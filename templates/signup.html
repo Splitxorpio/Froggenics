@@ -1,0 +1,45 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Signup</title>
+    </head>
+    <body>
+        <div class="container">
+            <form action="{{url_for('add_user')}}" method="post">
+                <input type="text" name="username" placeholder="Username">
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <div class="container login_signup">
+        <form action="{{url_for('add_user')}}" method="post">
+            <img style="width: 30%;" src="../static/signup.png" alt="">
+            <h1> <span class="highlight">Sign</span>up </h1>
+            <input type="text" name="username" placeholder="Username">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <input class="form-button" type="submit" value="Sign Up">
+            <p>Already have an account? <a class="highlight" href="{{url_for('login')}}">Login</a></p>
+        </form>
+    </div>
+</body>
+
+</html>

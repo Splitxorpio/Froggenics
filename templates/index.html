@@ -8,6 +8,7 @@
         <title>Froggenics</title>
         <link rel="stylesheet" href="../static/style.css">
         <link rel="icon" href="../static/dumbbell-frogo.png">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     </head>
 
     <body>
@@ -19,17 +20,42 @@
                 <div class="one-of-two">
                     <h1><span class="highlight">Frog</span>genics</h1>
                     <p>The <span class="highlight">ultimate</span> fitness guide to your wellbeing!</p>
+                    <a href="#learn-more" class="btn">Whaaat???</a>
                 </div>
             </div>
         </section>
-        <section>
+        <section id="learn-more">
             <div class="row">
                 <div class="one-of-two">
-                    <h1>Need help <span class="highlight">motivating</span> yourself?</h1>
-                    <p>Our <span class="highlight">fast</span> AI will help you reach your goals!</p>
+                    <h1 style="font-size: 45px;" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">Need help <span class="highlight">motivating</span> yourself?</h1>
+                    <hr data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100" style="width: 75%; margin: 10px;">
+                    <p data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150">Our <span class="highlight">fast</span> AI will help you reach your goals!</p>
+                    <a data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" style="transform: scale(0.9);" href="#start-now" class="btn">Motivate me!</a>
                 </div>
-                <img src="../static/dumbbell-frogo.png" alt="">
+                <div class="one-of-two" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+                    <img src="../static/dumbbell-frogo.png" alt="">
+                </div>
+            </div>
+        </section>
+        <section id="start-now">
+            <div class="row">
+                <div class="one-of-two" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+                    <img src="../static/learn-more.png" alt="">
+                </div>
+                <div class="one-of-two">
+                    <h1 style="font-size: 45px;" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">Start <span
+                            class="highlight">today</span> and reach your dreams!</h1>
+                    <hr data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100" style="width: 75%; margin: 10px;">
+                    <p data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150">Get accurate <span class="highlight">recommendations</span>
+                        optimized to your goal!</p>
+                    <a data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" style="transform: scale(0.9);"
+                        href="{{url_for('signup')}}" class="btn">Sign Up</a>
+                </div>
             </div>
         </section>
     </body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </html>

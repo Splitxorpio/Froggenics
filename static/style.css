@@ -2,7 +2,8 @@
 *{
     margin: 0;
     padding: 0;
-font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
+    scroll-behavior: smooth;
 }
 html, body{
     width: 100%;
@@ -70,4 +71,214 @@ section{
 }
 .half-width{
     width: 30%;
+}
+.btn{
+    background-color: white;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: black 2px solid;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.btn:hover{
+    transition: all 0.3s ease;
+    background-color: #00b300;
+    color: white;
+    border-color: white;
+    box-shadow: 0 0 10px white;
+}
+form{
+    width: 25%;
+    height: 80%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    border-radius: 5px;
+}
+form input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: 2px solid black;
+    border-top: 0px;
+    outline: none;
+    border-left: 0px;
+    border-right: 0px;
+    transition: 0.45s;
+}
+form input:focus{
+    transition: 0.1s;
+    border-bottom: 0px solid #00b300;
+    box-shadow: 5px 5px 5px #00b300;
+    transform: scale(1.01);
+}
+.form-button{
+    background-color: #00b300;
+    color: white;
+    border-color: white;
+}
+.left-column{
+    width:30%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.right-column{
+    width: 70%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: #00b300 2px solid;
+    /* shadow to the left */
+    box-shadow: -5px 0px 5px #00b300;
+}
+.column-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.column-card{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: #00b300 2px solid;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 0.45s;
+    text-align: center;
+}
+.column-card:hover{
+        box-shadow: 5px 5px 5px #00b300;
+        transition: 0.45s;
+        transform: translate(-5px, 5px);
+}
+.column-card img{
+    width: 50%;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+* {
+    box-sizing: border-box
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px;
+}
+.prev{
+    left: 0;
+    border-radius: 3px;
+}
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+/* Caption text */
+.text {
+    color: #00b300;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: black;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
 }
